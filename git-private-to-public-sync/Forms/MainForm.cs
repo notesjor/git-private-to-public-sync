@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using gitsync.Forms.Abstract;
+using gitsync.Model;
 using gitsync.Properties;
 using Telerik.WinControls.UI;
 
@@ -24,8 +25,9 @@ namespace gitsync.Forms
       if (fbdPriv.ShowDialog() != DialogResult.OK)
         return;
       DiscoverDirectory(fbdPriv.SelectedPath, fbdPriv.SelectedPath, tree_private);
+      SecureCopy.LoadCryptoStatus(fbdPriv.SelectedPath);
 
-      var fbdPub = new FolderBrowserDialog { Description = "Public Repository" };
+      var fbdPub = new FolderBrowserDialog { Description = "Öffentliches Repository" };
       if (fbdPub.ShowDialog() != DialogResult.OK)
         return;
       DiscoverDirectory(fbdPub.SelectedPath, fbdPub.SelectedPath, tree_public);
@@ -90,7 +92,7 @@ namespace gitsync.Forms
 
             var source = privatePath + (string)node.Tag;
             var sourceFiles = new HashSet<string>(Directory.GetFiles(source).Select(x => x.Replace(source, "")));
-            foreach (var file in Directory.GetFiles(destination).Select(x => x.Replace(destination, "")))
+            foreach (var file in Directory.GetFiles(destination).Select(x => x.Replace(destination, "").Replace(".aes", "")))
             {
               if (!sourceFiles.Contains(file))
                 File.Delete(destination + file);
@@ -102,7 +104,7 @@ namespace gitsync.Forms
           {
             try
             {
-              File.Copy(privatePath + (string)node.Tag, publicPath + (string)node.Tag, true);
+              SecureCopy.Copy(privatePath + (string)node.Tag, publicPath + (string)node.Tag);
             }
             catch (IOException)
             {
@@ -181,6 +183,12 @@ namespace gitsync.Forms
       node.Checked = true;
       foreach (var n in node.Nodes)
         RecursiveCheck(n);
+    }
+
+    private void btn_secure_Click(object sender, EventArgs e)
+    {
+      var form = new PasswortForm(privatePath);
+      form.ShowDialog();
     }
   }
 }

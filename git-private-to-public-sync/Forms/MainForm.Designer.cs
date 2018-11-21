@@ -31,6 +31,10 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.radCommandBar1 = new Telerik.WinControls.UI.RadCommandBar();
       this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
+      this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
+      this.btn_private = new Telerik.WinControls.UI.CommandBarButton();
+      this.btn_secure = new Telerik.WinControls.UI.CommandBarButton();
+      this.btn_sync = new Telerik.WinControls.UI.CommandBarButton();
       this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
       this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
       this.tree_private = new Telerik.WinControls.UI.RadTreeView();
@@ -38,10 +42,6 @@
       this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
       this.tree_public = new Telerik.WinControls.UI.RadTreeView();
       this.txt_public = new Telerik.WinControls.UI.RadTextBox();
-      this.commandBarStripElement1 = new Telerik.WinControls.UI.CommandBarStripElement();
-      this.btn_private = new Telerik.WinControls.UI.CommandBarButton();
-      this.btn_secure = new Telerik.WinControls.UI.CommandBarButton();
-      this.btn_sync = new Telerik.WinControls.UI.CommandBarButton();
       ((System.ComponentModel.ISupportInitialize)(this.radCommandBar1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
       this.radSplitContainer1.SuspendLayout();
@@ -72,6 +72,50 @@
       this.commandBarRowElement1.Name = "commandBarRowElement1";
       this.commandBarRowElement1.Strips.AddRange(new Telerik.WinControls.UI.CommandBarStripElement[] {
             this.commandBarStripElement1});
+      // 
+      // commandBarStripElement1
+      // 
+      this.commandBarStripElement1.DisplayName = "commandBarStripElement1";
+      this.commandBarStripElement1.Image = global::gitsync.Properties.Resources.security_lock;
+      this.commandBarStripElement1.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
+            this.btn_private,
+            this.btn_secure,
+            this.btn_sync});
+      this.commandBarStripElement1.Name = "commandBarStripElement1";
+      this.commandBarStripElement1.Text = "";
+      this.commandBarStripElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      // 
+      // btn_private
+      // 
+      this.btn_private.DisplayName = "commandBarButton1";
+      this.btn_private.DrawText = true;
+      this.btn_private.Image = global::gitsync.Properties.Resources.folder_open_update;
+      this.btn_private.Name = "btn_private";
+      this.btn_private.Text = "Verzeichnisse auswählen";
+      this.btn_private.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_private.Click += new System.EventHandler(this.btn_private_Click);
+      // 
+      // btn_secure
+      // 
+      this.btn_secure.DisplayName = "commandBarButton1";
+      this.btn_secure.DrawText = true;
+      this.btn_secure.Image = global::gitsync.Properties.Resources.security_lock;
+      this.btn_secure.Name = "btn_secure";
+      this.btn_secure.Text = "Passwort eingeben";
+      this.btn_secure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_secure.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+      this.btn_secure.Click += new System.EventHandler(this.btn_secure_Click);
+      // 
+      // btn_sync
+      // 
+      this.btn_sync.DisplayName = "commandBarButton4";
+      this.btn_sync.DrawText = true;
+      this.btn_sync.Image = global::gitsync.Properties.Resources.refresh;
+      this.btn_sync.Name = "btn_sync";
+      this.btn_sync.Text = "Starte Synchronisation";
+      this.btn_sync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btn_sync.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
+      this.btn_sync.Click += new System.EventHandler(this.btn_sync_Click);
       // 
       // radSplitContainer1
       // 
@@ -162,48 +206,6 @@
       this.txt_public.Size = new System.Drawing.Size(378, 36);
       this.txt_public.TabIndex = 0;
       this.txt_public.TextChanged += new System.EventHandler(this.txt_public_TextChanged);
-      // 
-      // commandBarStripElement1
-      // 
-      this.commandBarStripElement1.DisplayName = "commandBarStripElement1";
-      this.commandBarStripElement1.Image = global::gitsync.Properties.Resources.security_lock;
-      this.commandBarStripElement1.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
-            this.btn_private,
-            this.btn_secure,
-            this.btn_sync});
-      this.commandBarStripElement1.Name = "commandBarStripElement1";
-      this.commandBarStripElement1.Text = "";
-      this.commandBarStripElement1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      // 
-      // btn_private
-      // 
-      this.btn_private.DisplayName = "commandBarButton1";
-      this.btn_private.DrawText = true;
-      this.btn_private.Image = global::gitsync.Properties.Resources.folder_open_update;
-      this.btn_private.Name = "btn_private";
-      this.btn_private.Text = "Verzeichnisse auswählen";
-      this.btn_private.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btn_private.Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-      this.btn_private.Click += new System.EventHandler(this.btn_private_Click);
-      // 
-      // btn_secure
-      // 
-      this.btn_secure.DisplayName = "commandBarButton1";
-      this.btn_secure.DrawText = true;
-      this.btn_secure.Image = global::gitsync.Properties.Resources.security_lock;
-      this.btn_secure.Name = "btn_secure";
-      this.btn_secure.Text = "Passwort eingeben";
-      this.btn_secure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      // 
-      // btn_sync
-      // 
-      this.btn_sync.DisplayName = "commandBarButton4";
-      this.btn_sync.DrawText = true;
-      this.btn_sync.Image = global::gitsync.Properties.Resources.refresh;
-      this.btn_sync.Name = "btn_sync";
-      this.btn_sync.Text = "Starte Synchronisation";
-      this.btn_sync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btn_sync.Click += new System.EventHandler(this.btn_sync_Click);
       // 
       // MainForm
       // 

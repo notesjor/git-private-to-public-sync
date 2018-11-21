@@ -183,7 +183,9 @@
     <Compile Include="Forms\PasswortForm.Designer.cs">
       <DependentUpon>PasswortForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\FileCopyCryptHelper.cs" />
+    <Compile Include="Model\CryptedFileHeader.cs" />
+    <Compile Include="Model\CryptoMode.cs" />
+    <Compile Include="Model\SecureCopy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
